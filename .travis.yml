@@ -9,12 +9,9 @@ notifications:
 branches:
   only:
     - master
-node_js:
-  - iojs
-before_install:
-  - npm i -g npm@^2.0.0
-  - npm i -g rollup
 before_script:
   - npm prune
+script:
+  - yarn lint && yarn test
 after_success:
-  - npm run semantic-release
+  - yarn semantic-release
