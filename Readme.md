@@ -9,11 +9,21 @@
 * [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/) for testing
 * Lint using [babel-eslint](https://github.com/babel/babel-eslint)
 * Code coverage recording with [istanbul](https://gotwarlost.github.io/istanbul/)
+* Code coverage reporting to codecov.io
+* Prettier for code formatting as a precommit hook
 
-## Development
-Supported tasks are `grunt`, `grunt watch` and `grunt build`
+## npm scripts
+- **"test"**: Run tests
+- **"test:watch"**: Run tests while watching at the same time
+- **"test:cover"**: Create code coverage report using istanbul
+- **"test:report"**: Report code coverage report to codecov.io
+- **"build"**: Build all JS files to different formats
+- **"build:watch"**: Build all JS files to different formats while watching
+- **"lint"**: Run eslint on all JS files
+- **"lint:fix"**: Fix linting errors
+- **"format"**: Run prettier on js files
 
 ## License
-MIT @ 2015
+MIT @ Ritesh Kumar
 
 
