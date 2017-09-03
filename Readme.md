@@ -42,8 +42,10 @@ API
 #### json : `String | JSON`
 (string | object) => JSON to be converted
 
-#### options
-**lang** : One of `flow`, `typescript`, `scala` or `rust-serde`
+### Options
+Option|Default|Description
+----|-----|-----
+lang| 'flow'| One of `flow`, `typescript`, `scala` or `rust-serde`
 
 License
 =======
