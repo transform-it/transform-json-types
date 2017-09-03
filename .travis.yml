@@ -13,7 +13,5 @@ before_script:
   - npm prune
 script:
   - yarn lint && yarn test
-after_success:
-  - yarn semantic-release
 node_js:
   - "8"

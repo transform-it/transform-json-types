@@ -1,7 +1,7 @@
 {
-  "name": "javascript-plugin-boilerplate",
-  "version": "0.0.0-semantically-released",
-  "description": "A boilerplate to write plugins in pure JavaScript using ES2015",
+  "name": "transform-json-types",
+  "version": "0.1.0",
+  "description": "An utility to generate Flow, TypeScript, Rust Serde Struct and Scala Case Class from JSON.",
   "main": "main/index.js",
   "module": "src/index.js",
   "browser": "umd/index.js",
@@ -73,7 +73,7 @@
       "git add"
     ]
   },
-  "homepage": "https://github.com/ritz078/javascript-plugin-boilerplate",
+  "homepage": "https://github.com/transform-it/transform-json-types",
   "ava": {
     "require": [
       "babel-register",
