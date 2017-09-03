@@ -6,7 +6,7 @@ const pascalCase = require("pascal-case");
 
 const config = {
   entry: "src/index.js",
-  dest: "dist/lunar.umd.js",
+  dest: "umd/index.js",
   moduleName: pascalCase(pkg.name),
   format: "umd",
   banner,

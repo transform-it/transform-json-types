@@ -13,7 +13,7 @@ const banner = `/*
 
 const config = {
   entry: "src/index.js",
-  dest: "dist/lunar.cjs.js",
+  dest: "dist/index.js",
   format: "cjs",
   banner,
   plugins: [fileSize()]
