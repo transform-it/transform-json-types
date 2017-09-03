@@ -229,6 +229,10 @@ function analyzeObject(obj, objectName) {
 export default function transform(obj, options) {
   obj = isString(obj) ? JSON.parse(obj) : obj;
 
+  if (isArray(obj)) {
+    obj = merge({}, ...obj);
+  }
+
   const defaultOptions = {
     objectName: "_RootInterface",
     lang: "flow"
@@ -266,8 +270,11 @@ export default function transform(obj, options) {
     localClasses[clsName] = output;
   });
 
+  output = "";
+
   Object.keys(localClasses).sort().forEach(key => {
     output += localClasses[key];
   });
+
   return output;
 }

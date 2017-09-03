@@ -1,8 +1,8 @@
 {
   "name": "transform-json-types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An utility to generate Flow, TypeScript, Rust Serde Struct and Scala Case Class from JSON.",
-  "main": "main/index.js",
+  "main": "dist/index.js",
   "module": "src/index.js",
   "browser": "umd/index.js",
   "files": [

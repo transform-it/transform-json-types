@@ -49,6 +49,16 @@ test('should return correct flow typings', t => {
 	t.snapshot(transform(x))
 })
 
+test('should return correct flow typings if array is passed', t => {
+	t.snapshot(transform(
+		[{
+			a: 'hello'
+		}, {
+			b: "hi"
+		}]
+	))
+})
+
 test('should return correct typescript interfaces', t => {
 	t.snapshot(transform(x, {
 		lang: 'typescript'
