@@ -22,7 +22,7 @@
     "build:cjs": "rollup -c rollup.cjs.js",
     "build:watch": "concurrently 'npm run build:umd -- -w' 'npm run build:cjs -- -w'",
     "lint": "eslint src/**/*.js *.js tests/**/*.js",
-    "lint:fix": "npm run lint -- -fix",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write src/**/*.js *.js tests/**/*.js",
     "prepublish": "npm run build",
     "precommit": "lint-staged"
@@ -31,7 +31,7 @@
   "devDependencies": {
     "all-contributors-cli": "^4.4.0",
     "ava": "^0.21.0",
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
@@ -79,5 +79,10 @@
       "babel-register",
       "babel-polyfill"
     ]
+  },
+  "dependencies": {
+    "is": "^3.2.1",
+    "lodash": "^4.17.4",
+    "sha1": "^1.1.1"
   }
 }
