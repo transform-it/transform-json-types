@@ -8,7 +8,11 @@ import {
   isNumber,
   isString,
   merge,
-  isInteger
+  isInteger,
+  intersection,
+  difference,
+  union,
+  assign
 } from "lodash";
 
 const typeNames = {
@@ -29,6 +33,7 @@ const mapping = {
     terminator: ";",
     equator: " = ",
     types: typeNames,
+    optional: "?",
     handleArray: (className = "", any) => (any ? "any[]" : `${className}[]`)
   },
   typescript: {
@@ -39,6 +44,7 @@ const mapping = {
     terminator: "",
     equator: "",
     types: typeNames,
+    optional: "?",
     handleArray: (className = "", any) => (any ? "any[]" : `${className}[]`)
   },
   "rust-serde": {
@@ -78,6 +84,16 @@ let langDetails = {};
 let classes = {};
 let classesCache = {};
 let classesInUse = {};
+let optionalProperties = {};
+
+function setOptionalProperties(arr, objectName) {
+  if (!isValueConsistent(arr)) return;
+  const arrayOfKeys = arr.map(a => Object.keys(a));
+  optionalProperties[objectName] = difference(
+    union(...arrayOfKeys),
+    intersection(...arrayOfKeys)
+  );
+}
 
 function hasSpecialChars(str) {
   return /[ ~`!#$%\^&*+=\-\[\]\\';,\/{}|\\":<>\?]/g.test(str);
@@ -137,20 +153,11 @@ function getInterfaceType(key, value, classes, classesCache, classesInUse) {
   return className;
 }
 
-function isValueConsistent(o) {
-  if (!o.length) {
-    return true;
-  } else {
-    if (!isArray(o)) {
-      o = values(o);
-    }
-    const n = o[0];
-    const nn = isObject(n) ? generateSignature(n) : typeof n;
-    return Object.keys(o).every(
-      key =>
-        (isObject(o[key]) ? generateSignature(o[key]) : typeof o[key]) === nn
-    );
+function isValueConsistent(arr) {
+  if (!isEmpty(arr)) {
+    arr.every(x => (isObject(x) ? "object" : typeof x));
   }
+  return true;
 }
 
 function analyzeObject(obj, objectName) {
@@ -162,6 +169,7 @@ function analyzeObject(obj, objectName) {
     classesInUse
   );
   classes[objectName] = classes[objectName] || {};
+
   Object.keys(obj).map(key => {
     let type = "string";
     const value = obj[key];
@@ -183,20 +191,20 @@ function analyzeObject(obj, objectName) {
       case isArray(value):
         type = handleArray("", true);
         if (isValueConsistent(value)) {
-          if (!value.length) {
+          if (isEmpty(value)) {
             type = handleArray("", true);
           } else {
             if (isObject(value[0])) {
-              type = handleArray(
-                getInterfaceType(
-                  key,
-                  value[0],
-                  classes,
-                  classesCache,
-                  classesInUse
-                )
+              const clsName = getInterfaceType(
+                key,
+                assign({}, ...value),
+                classes,
+                classesCache,
+                classesInUse
               );
-              analyzeObject(value[0], key);
+              type = handleArray(clsName);
+              setOptionalProperties(value, clsName);
+              analyzeObject(assign({}, ...value), key);
             } else {
               type = `${getBasicType(value[0])}[]`;
             }
@@ -224,6 +232,16 @@ function analyzeObject(obj, objectName) {
   });
 
   return { classes, classesCache, classesInUse };
+}
+
+function setOptional(key, objName) {
+  if (
+    optionalProperties[objName] &&
+    optionalProperties[objName].indexOf(key) >= 0
+  ) {
+    return langDetails.optional || "?";
+  }
+  return "";
 }
 
 export default function transform(obj, options) {
@@ -264,7 +282,9 @@ export default function transform(obj, options) {
     output = preInterface || "";
     output += `${langDetails.interface} ${clsName}${equator} ${startingBrace}\n`;
     Object.keys(classes[clsName]).map(key => {
-      output += `  ${key}: ${classes[clsName][key]}${separator}\n`;
+      output += `  ${key}${setOptional(key, clsName)}: ${classes[clsName][
+        key
+      ]}${separator}\n`;
     });
     output += `${endingBrace}${terminator}\n\n`;
     localClasses[clsName] = output;
