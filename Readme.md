@@ -4,6 +4,8 @@ transform-json-types
 
 An utility to generate Flow, TypeScript, Rust Serde Struct and Scala Case Class from JSON.
 
+**Note** : It also detects optional properties for TS/Flow from a Collection.
+
 Installation
 ============
 
@@ -33,6 +35,15 @@ console.log(json, {
 // interface RootJson {
 //   hello: string
 // }
+
+console.log(json, {
+	lang: "rust"
+})
+
+// #[derive(Serialize, Deserialize)]
+// struct RootInterface {
+//   hello: String,
+// }
 ```
 
 API
@@ -40,12 +51,19 @@ API
 ### transform(json, [options])
 
 #### json : `String | JSON`
-(string | object) => JSON to be converted
+You can pass a parsed JSON or a stringified JSON.
 
 ### Options
 Option|Default|Description
 ----|-----|-----
 lang| 'flow'| One of `flow`, `typescript`, `scala` or `rust-serde`
+
+### Development
+1. Fork and clone the repo.
+1. Create a new branch.
+1. Create features or fix bugs.
+1. Write test to improve stability.
+1. Open a PR.
 
 License
 =======
