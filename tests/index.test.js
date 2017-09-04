@@ -18,7 +18,8 @@ const x = `{
         },
         {
           "id": 1,
-          "name": "Lottie Hogan"
+          "name": "Lottie Hogan",
+          "jhkjh":"lklkj"
         }
       ]
     },
@@ -75,4 +76,18 @@ test('should return correct Scala Case Class', t => {
 	t.snapshot(transform(x, {
 		lang: "scala"
 	}))
+})
+
+test('should return correct Typings when objects have different keys in an Array', t => {
+	const json = `{
+		"x": [{
+			"a": "aa",
+			"b": "bb"
+		}, {
+			"a": "aa",
+			"c": "cc"
+		}]
+	}`
+
+	t.snapshot(transform(json))
 })
