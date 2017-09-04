@@ -237,9 +237,10 @@ function analyzeObject(obj, objectName) {
 function setOptional(key, objName) {
   if (
     optionalProperties[objName] &&
-    optionalProperties[objName].indexOf(key) >= 0
+    optionalProperties[objName].indexOf(key) >= 0 &&
+    langDetails.optional
   ) {
-    return langDetails.optional || "?";
+    return langDetails.optional;
   }
   return "";
 }
