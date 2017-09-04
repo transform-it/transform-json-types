@@ -257,6 +257,7 @@ export default function transform(obj, options) {
   };
 
   langDetails = {};
+  optionalProperties = {};
 
   const { objectName, lang } = merge({}, defaultOptions, options);
 
