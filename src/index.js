@@ -57,6 +57,7 @@ const mapping = {
       STRING: "String",
       NUMBER: "f64",
       INTEGER: "i64",
+      BOOLEAN: "bool",
       ANY: "()"
     }),
     handleArray: (className = "") => `Vec<${className}>`,
