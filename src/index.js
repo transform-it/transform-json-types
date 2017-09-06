@@ -1,6 +1,5 @@
 import SHA1 from "sha1";
 import {
-  values,
   isEmpty,
   isArray,
   isObject,
@@ -76,6 +75,7 @@ const mapping = {
       INTEGER: "Int",
       ANY: "AnyVal"
     }),
+    hideTerminatorAtLast: true,
     handleArray: (className = "") => `Array[${className}]`
   }
 };
@@ -277,16 +277,23 @@ export default function transform(obj, options) {
     endingBrace,
     startingBrace,
     terminator,
-    preInterface
+    preInterface,
+    hideTerminatorAtLast
   } = langDetails;
 
   Object.keys(classes).map(clsName => {
     output = preInterface || "";
     output += `${langDetails.interface} ${clsName}${equator} ${startingBrace}\n`;
-    Object.keys(classes[clsName]).map(key => {
+
+    const keys = Object.keys(classes[clsName]);
+
+    keys.map((key, i) => {
+      const _separator =
+        i === keys.length - 1 && hideTerminatorAtLast ? "" : separator;
+
       output += `  ${key}${setOptional(key, clsName)}: ${classes[clsName][
         key
-      ]}${separator}\n`;
+      ]}${_separator}\n`;
     });
     output += `${endingBrace}${terminator}\n\n`;
     localClasses[clsName] = output;
