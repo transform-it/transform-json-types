@@ -74,10 +74,11 @@ const mapping = {
       STRING: "String",
       NUMBER: "Double",
       INTEGER: "Int",
-      ANY: "AnyVal"
+      ANY: "Any",
+      BOOLEAN: "Boolean"
     }),
     hideTerminatorAtLast: true,
-    handleArray: (className = "") => `Array[${className}]`
+    handleArray: (className = "") => `Seq[${className}]`
   }
 };
 
