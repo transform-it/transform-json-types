@@ -206,7 +206,7 @@ function analyzeObject(obj, objectName) {
               setOptionalProperties(value, clsName);
               analyzeObject(assign({}, ...value), key);
             } else {
-              type = `${getBasicType(value[0])}[]`;
+              type = `${handleArray(getBasicType(value[0]))}`;
             }
           }
         }
