@@ -58,6 +58,9 @@ Option|Default|Description
 ----|-----|-----
 lang| 'flow'| One of `flow`, `typescript`, `scala` or `rust-serde`
 
+### Inspirations
+Majority of the inspiration was from [xperiment](https://github.com/xperiments)'s [json2dts](https://github.com/xperiments/json2dts)
+
 ### Development
 1. Fork and clone the repo.
 1. Create a new branch.
