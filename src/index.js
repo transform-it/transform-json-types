@@ -1,3 +1,4 @@
+/* eslint-disable standard/computed-property-even-spacing */
 import SHA1 from "sha1";
 import {
   isEmpty,
@@ -11,8 +12,11 @@ import {
   intersection,
   difference,
   union,
-  assign
+  assign,
+  camelCase,
+  replace
 } from "lodash";
+import rustReserved from "./rust-reserved";
 
 const typeNames = {
   STRING: "string",
@@ -247,6 +251,17 @@ function setOptional(key, objName) {
   return "";
 }
 
+function rustRename(key, lang, clsName) {
+  if (
+    lang === "rust-serde" &&
+    (rustReserved.indexOf(key) >= 0 || key.indexOf(" ") >= 0)
+  ) {
+    const changedKey = `_${camelCase(key)}`;
+    return `  #[serde(rename = "${key.replace(/"/g, "")}")]\n  ${changedKey}`;
+  }
+  return `  ${key}${setOptional(key, clsName)}`;
+}
+
 export default function transform(obj, options) {
   obj = isString(obj) ? JSON.parse(obj) : obj;
 
@@ -293,7 +308,7 @@ export default function transform(obj, options) {
       const _separator =
         i === keys.length - 1 && hideTerminatorAtLast ? "" : separator;
 
-      output += `  ${key}${setOptional(key, clsName)}: ${classes[clsName][
+      output += `${rustRename(key, lang, clsName)}: ${classes[clsName][
         key
       ]}${_separator}\n`;
     });
