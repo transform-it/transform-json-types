@@ -12,7 +12,7 @@ const x = `{
         "nulla",
         "ullamco"
       ],
-      "#friends": [
+      "@friends": [
         {
           "id": 0,
           "name": "Robinson Woods"
@@ -33,7 +33,7 @@ const x = `{
         "aliqua",
         "nulla"
       ],
-      "#friends": [
+      "@friends": [
         {
           "id": 0,
           "name": "Mamie Wyatt"

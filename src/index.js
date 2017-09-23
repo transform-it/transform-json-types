@@ -106,7 +106,7 @@ function setOptionalProperties(arr, objectName) {
 }
 
 function hasSpecialChars(str) {
-  return /[ ~`!#$%\^&*+=\-\[\]\\';,\/{}|\\":<>\?]/g.test(str);
+  return /[ ~`!@#$%\^&*+=\-\[\]\\';,\/{}|\\":<>\?]/g.test(str);
 }
 
 function getBasicType(value) {
