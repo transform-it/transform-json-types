@@ -14,9 +14,9 @@ import {
   union,
   assign,
   camelCase,
-  replace
+  capitalize
 } from "lodash";
-import rustReserved from "./rust-reserved";
+import rustReserved from "rust-keywords";
 
 const typeNames = {
   STRING: "string",
@@ -208,7 +208,7 @@ function analyzeObject(obj, objectName) {
                 classesCache,
                 classesInUse
               );
-              type = handleArray(clsName);
+              type = handleArray(capitalize(camelCase(clsName)));
               setOptionalProperties(value, clsName);
               analyzeObject(assign({}, ...value), key);
             } else {
@@ -251,12 +251,17 @@ function setOptional(key, objName) {
   return "";
 }
 
+function hasSpecialCharacters(str) {
+  return /[ !@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/.test(str);
+}
+
 function rustRename(key, lang, clsName) {
+  const camCase = hasSpecialCharacters(key) ? camelCase(key) : key;
   if (
     lang === "rust-serde" &&
-    (rustReserved.indexOf(key) >= 0 || key.indexOf(" ") >= 0)
+    (rustReserved.indexOf(key) >= 0 || key.indexOf(" ") >= 0 || key !== camCase)
   ) {
-    const changedKey = `_${camelCase(key)}`;
+    const changedKey = `${camCase}_`;
     return `  #[serde(rename = "${key.replace(/"/g, "")}")]\n  ${changedKey}`;
   }
   return `  ${key}${setOptional(key, clsName)}`;
@@ -300,7 +305,9 @@ export default function transform(obj, options) {
 
   Object.keys(classes).map(clsName => {
     output = preInterface || "";
-    output += `${langDetails.interface} ${clsName}${equator} ${startingBrace}\n`;
+    output += `${langDetails.interface} ${capitalize(
+      camelCase(clsName)
+    )}${equator} ${startingBrace}\n`;
 
     const keys = Object.keys(classes[clsName]);
 
