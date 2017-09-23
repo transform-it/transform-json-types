@@ -92,6 +92,10 @@ let classesCache = {};
 let classesInUse = {};
 let optionalProperties = {};
 
+function pascalCase(str) {
+  return capitalize(camelCase(str));
+}
+
 function setOptionalProperties(arr, objectName) {
   if (!isValueConsistent(arr)) return;
   const arrayOfKeys = arr.map(a => Object.keys(a));
@@ -135,11 +139,7 @@ function generateSignature(o) {
 }
 
 function getValidClassName(key) {
-  return key
-    .replace(/_/gi, " ")
-    .replace(/-/gi, " ")
-    .replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1))
-    .replace(/ /gi, "");
+  return pascalCase(key);
 }
 
 function getInterfaceType(key, value, classes, classesCache, classesInUse) {
@@ -208,7 +208,7 @@ function analyzeObject(obj, objectName) {
                 classesCache,
                 classesInUse
               );
-              type = handleArray(capitalize(camelCase(clsName)));
+              type = handleArray(clsName);
               setOptionalProperties(value, clsName);
               analyzeObject(assign({}, ...value), key);
             } else {
@@ -251,12 +251,8 @@ function setOptional(key, objName) {
   return "";
 }
 
-function hasSpecialCharacters(str) {
-  return /[ !@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/.test(str);
-}
-
 function rustRename(key, lang, clsName) {
-  const camCase = hasSpecialCharacters(key) ? camelCase(key) : key;
+  const camCase = hasSpecialChars(key) ? camelCase(key) : key;
   if (
     lang === "rust-serde" &&
     (rustReserved.indexOf(key) >= 0 || key.indexOf(" ") >= 0 || key !== camCase)
@@ -305,9 +301,7 @@ export default function transform(obj, options) {
 
   Object.keys(classes).map(clsName => {
     output = preInterface || "";
-    output += `${langDetails.interface} ${capitalize(
-      camelCase(clsName)
-    )}${equator} ${startingBrace}\n`;
+    output += `${langDetails.interface} ${clsName}${equator} ${startingBrace}\n`;
 
     const keys = Object.keys(classes[clsName]);
 
