@@ -14,7 +14,7 @@ import {
   union,
   assign,
   camelCase,
-  capitalize
+  upperFirst
 } from "lodash";
 import rustReserved from "rust-keywords";
 
@@ -93,7 +93,7 @@ let classesInUse = {};
 let optionalProperties = {};
 
 function pascalCase(str) {
-  return capitalize(camelCase(str));
+  return upperFirst(camelCase(str));
 }
 
 function setOptionalProperties(arr, objectName) {
