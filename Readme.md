@@ -2,6 +2,8 @@ transform-json-types
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 =========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/transform-it/transform-json-types.svg)](https://greenkeeper.io/)
+
 An utility to generate Flow, TypeScript, Rust Serde Struct and Scala Case Class from JSON.
 
 **Note** : It also detects optional properties for TS/Flow from a Collection.
