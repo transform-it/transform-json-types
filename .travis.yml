@@ -9,6 +9,7 @@ notifications:
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
 before_script:
   - npm prune
 script:
