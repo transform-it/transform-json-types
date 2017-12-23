@@ -57,6 +57,7 @@ You can pass a parsed JSON or a stringified JSON.
 Option|Default|Description
 ----|-----|-----
 lang| 'flow'| One of `flow`, `typescript`, `scala` or `rust-serde`
+rustCase| 'camelCase' | either snakeCase or camelCase
 
 ### Inspirations
 Majority of the inspiration was from [xperiment](https://github.com/xperiments)'s [json2dts](https://github.com/xperiments/json2dts)

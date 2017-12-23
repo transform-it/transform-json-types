@@ -14,7 +14,8 @@ import {
   union,
   assign,
   camelCase,
-  upperFirst
+  upperFirst,
+  snakeCase
 } from "lodash";
 import rustReserved from "rust-keywords";
 
@@ -251,13 +252,17 @@ function setOptional(key, objName) {
   return "";
 }
 
-function rustRename(key, lang, clsName) {
-  const camCase = hasSpecialChars(key) ? camelCase(key) : key;
+function rustRename(key, lang, clsName, rustCase) {
+  const caseFunc = rustCase === "camelCase" ? camelCase : snakeCase;
+  const casedText =
+    hasSpecialChars(key) || rustCase === "snakeCase" ? caseFunc(key) : key;
   if (
     lang === "rust-serde" &&
-    (rustReserved.indexOf(key) >= 0 || key.indexOf(" ") >= 0 || key !== camCase)
+    (rustReserved.indexOf(key) >= 0 ||
+      key.indexOf(" ") >= 0 ||
+      key !== casedText)
   ) {
-    const changedKey = `${camCase}_`;
+    const changedKey = `${casedText.indexOf("_") >= 0 ? "" : "_"}${casedText}`;
     return `  #[serde(rename = "${key.replace(/"/g, "")}")]\n  ${changedKey}`;
   }
   return `  ${key}${setOptional(key, clsName)}`;
@@ -272,13 +277,18 @@ export default function transform(obj, options) {
 
   const defaultOptions = {
     objectName: "_RootInterface",
-    lang: "flow"
+    lang: "flow",
+    rustCase: "camelCase"
   };
 
   langDetails = {};
   optionalProperties = {};
 
-  const { objectName, lang } = merge({}, defaultOptions, options);
+  const { objectName, lang, rustCase } = merge({}, defaultOptions, options);
+
+  if (rustCase !== "camelCase" && rustCase !== "snakeCase") {
+    throw new Error("rustCase can only be 'camelCase' or 'snakeCase'.");
+  }
 
   langDetails = mapping[lang];
   let output = "";
@@ -309,9 +319,9 @@ export default function transform(obj, options) {
       const _separator =
         i === keys.length - 1 && hideTerminatorAtLast ? "" : separator;
 
-      output += `${rustRename(key, lang, clsName)}: ${classes[clsName][
-        key
-      ]}${_separator}\n`;
+      output += `${rustRename(key, lang, clsName, rustCase)}: ${classes[
+        clsName
+      ][key]}${_separator}\n`;
     });
     output += `${endingBrace}${terminator}\n\n`;
     localClasses[clsName] = output;

@@ -6,7 +6,7 @@ const x = `{
     {
       "_id": "5988946e45e52d60b33a25c7",
       "type": 50.087977,
-      "a b": "abc",
+      "aB": "abc",
       "longitude": 72.167197,
       "tags": [
         "nulla",
@@ -68,9 +68,16 @@ test('should return correct typescript interfaces', t => {
 	}))
 })
 
-test('should return correct rust-serde struct', t => {
+test('should return correct rust-serde struct with camel case option', t => {
 	t.snapshot(transform(x, {
 		lang: "rust-serde"
+	}))
+})
+
+test('should return correct rust-serde struct with snake case option', t => {
+	t.snapshot(transform(x, {
+    lang: "rust-serde",
+    rustCase: "snakeCase"
 	}))
 })
 
