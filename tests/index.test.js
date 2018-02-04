@@ -100,3 +100,22 @@ test('should return correct Typings when objects have different keys in an Array
 
 	t.snapshot(transform(json))
 })
+
+test('should return correct io-ts typings', t => {
+	t.snapshot(transform(x, {
+		lang: "io-ts"
+	}))
+})
+
+test('should return correct io-ts typings if array is passed', t => {
+	t.snapshot(transform(
+		[{
+			a: 'hello'
+		}, {
+			b: "hi"
+    }],
+    {
+      lang: "io-ts"
+    }
+  ))
+})
