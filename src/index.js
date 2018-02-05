@@ -92,16 +92,17 @@ const mapping = {
     endingBrace: "})",
     terminator: ";",
     equator: " = t.type(",
-    types: typeNames,
     optional: "?",
-    handleArray: (className = "", any) => (any ? "any[]" : `${className}[]`),
-    types: merge({}, typeNames, {
+    handleArray: (className = "", any) =>
+      any ? "t.Array" : `t.array(${className})`,
+    types: {
       STRING: "t.string",
       NUMBER: "t.number",
       INTEGER: "t.Integer",
       ANY: "t.any",
-      BOOLEAN: "t.boolean"
-    })
+      BOOLEAN: "t.boolean",
+      ARRAY: "t.array"
+    }
   }
 };
 
