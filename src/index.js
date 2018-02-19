@@ -86,6 +86,7 @@ const mapping = {
     handleArray: (className = "") => `Seq[${className}]`
   },
   "io-ts": {
+    preText: "import * as t from 'io-ts'",
     interface: "const",
     separator: ",",
     startingBrace: "{",
@@ -310,7 +311,7 @@ export default function transform(obj, options) {
   }
 
   langDetails = mapping[lang];
-  let output = "";
+  let output = langDetails.preText ? `${langDetails.preText};\n\n` : "";
   const localClasses = {};
   classes = {};
   classesCache = {};
@@ -329,7 +330,7 @@ export default function transform(obj, options) {
   } = langDetails;
 
   Object.keys(classes).map(clsName => {
-    output = preInterface || "";
+    output += preInterface || "";
     output += `${langDetails.interface} ${clsName}${equator} ${startingBrace}\n`;
 
     const keys = Object.keys(classes[clsName]);

@@ -56,7 +56,7 @@ You can pass a parsed JSON or a stringified JSON.
 ### Options
 Option|Default|Description
 ----|-----|-----
-lang| 'flow'| One of `flow`, `typescript`, `scala` or `rust-serde`
+lang| 'flow'| One of `flow`, `typescript`, `scala`, `io-ts` or `rust-serde`
 rustCase| 'camelCase' | either snakeCase or camelCase
 
 ### Inspirations
