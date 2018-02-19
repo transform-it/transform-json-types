@@ -10,6 +10,10 @@
     "src",
     "umd"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/transform-it/transform-json-types.git"
+  },
   "scripts": {
     "commit": "git cz",
     "test": "ava",

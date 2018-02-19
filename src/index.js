@@ -84,6 +84,25 @@ const mapping = {
     }),
     hideTerminatorAtLast: true,
     handleArray: (className = "") => `Seq[${className}]`
+  },
+  "io-ts": {
+    interface: "const",
+    separator: ",",
+    startingBrace: "{",
+    endingBrace: "})",
+    terminator: ";",
+    equator: " = t.type(",
+    optional: "?",
+    handleArray: (className = "", any) =>
+      any ? "t.Array" : `t.array(${className})`,
+    types: {
+      STRING: "t.string",
+      NUMBER: "t.number",
+      INTEGER: "t.Integer",
+      ANY: "t.any",
+      BOOLEAN: "t.boolean",
+      ARRAY: "t.array"
+    }
   }
 };
 
