@@ -1,5 +1,5 @@
 transform-json-types
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 =========
 
 An utility to generate Flow, TypeScript, Rust Serde Struct and Scala Case Class from JSON.
@@ -82,8 +82,9 @@ MIT @ [Ritesh Kumar](https://twitter.com/ritz078)
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars3.githubusercontent.com/u/5389035?v=4" width="100px;"/><br /><sub>Ritesh Kumar</sub>](http://riteshkr.com)<br />[💻](https://github.com//transform-json-types/commits?author=ritz078 "Code") [📖](https://github.com//transform-json-types/commits?author=ritz078 "Documentation") [🤔](#ideas-ritz078 "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/47542?v=4" width="100px;"/><br /><sub>Florian Gilcher</sub>](http://asquera.de)<br />[💻](https://github.com//transform-json-types/commits?author=skade "Code") | [<img src="https://avatars0.githubusercontent.com/u/417709?v=4" width="100px;"/><br /><sub>Pedro Casaubon</sub>](http://www.xperiments.in)<br />[💻](https://github.com//transform-json-types/commits?author=xperiments "Code") [🤔](#ideas-xperiments "Ideas, Planning, & Feedback") |
-| :---: | :---: | :---: |
+<!-- prettier-ignore -->
+| [<img src="https://avatars3.githubusercontent.com/u/5389035?v=4" width="100px;"/><br /><sub><b>Ritesh Kumar</b></sub>](http://riteshkr.com)<br />[💻](https://github.com//transform-json-types/commits?author=ritz078 "Code") [📖](https://github.com//transform-json-types/commits?author=ritz078 "Documentation") [🤔](#ideas-ritz078 "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/47542?v=4" width="100px;"/><br /><sub><b>Florian Gilcher</b></sub>](http://asquera.de)<br />[💻](https://github.com//transform-json-types/commits?author=skade "Code") | [<img src="https://avatars0.githubusercontent.com/u/417709?v=4" width="100px;"/><br /><sub><b>Pedro Casaubon</b></sub>](http://www.xperiments.in)<br />[💻](https://github.com//transform-json-types/commits?author=xperiments "Code") [🤔](#ideas-xperiments "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/179534?v=4" width="100px;"/><br /><sub><b>stereobooster</b></sub>](https://github.com/stereobooster)<br />[💻](https://github.com//transform-json-types/commits?author=stereobooster "Code") |
+| :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
