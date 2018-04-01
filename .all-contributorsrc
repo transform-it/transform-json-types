@@ -45,6 +45,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "waf",
+      "name": "Will Fuqua",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/97195?v=4",
+      "profile": "http://fuqua.io",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
