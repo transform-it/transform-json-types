@@ -28,17 +28,17 @@ const json = `{
   "hello": "world"
 }`
 
-console.log(json, {
+console.log(transform(json, {
   lang: "typescript"
-})
+}))
 
 // interface RootJson {
 //   hello: string
 // }
 
-console.log(json, {
-	lang: "rust"
-})
+console.log(transform(json, {
+	lang: "rust-serde"
+}))
 
 // #[derive(Serialize, Deserialize)]
 // struct RootInterface {
