@@ -153,9 +153,19 @@ function getBasicType(value) {
 
 function generateSignature(o) {
   if (isObject(o)) {
-    return SHA1(Object.keys(o).map(n => n.toLowerCase()).sort().join("|"));
+    return SHA1(
+      Object.keys(o)
+        .map(n => n.toLowerCase())
+        .sort()
+        .join("|")
+    );
   } else {
-    return SHA1(Object.keys(o).map(n => typeof n).sort().join("|"));
+    return SHA1(
+      Object.keys(o)
+        .map(n => typeof n)
+        .sort()
+        .join("|")
+    );
   }
 }
 
@@ -330,7 +340,7 @@ export default function transform(obj, options) {
   } = langDetails;
 
   Object.keys(classes).map(clsName => {
-    output += preInterface || "";
+    output = preInterface || "";
     output += `${langDetails.interface} ${clsName}${equator} ${startingBrace}\n`;
 
     const keys = Object.keys(classes[clsName]);
@@ -349,9 +359,11 @@ export default function transform(obj, options) {
 
   output = "";
 
-  Object.keys(localClasses).sort().forEach(key => {
-    output += localClasses[key];
-  });
+  Object.keys(localClasses)
+    .sort()
+    .forEach(key => {
+      output += localClasses[key];
+    });
 
   return output;
 }
