@@ -104,6 +104,25 @@ const mapping = {
       BOOLEAN: "t.boolean",
       ARRAY: "t.array"
     }
+  },
+  sarcastic: {
+    interface: "const",
+    separator: ",",
+    startingBrace: "{",
+    endingBrace: "})",
+    terminator: ";",
+    equator: " = is.shape(",
+    optional: "?", // is.maybe
+    handleArray: (className = "", any) =>
+      any ? "is.array" : `is.arrayOf(${className})`,
+    types: {
+      STRING: "is.string",
+      NUMBER: "is.number",
+      INTEGER: "is.number",
+      ANY: "is.any",
+      BOOLEAN: "is.boolean",
+      ARRAY: "is.array"
+    }
   }
 };
 
@@ -153,19 +172,9 @@ function getBasicType(value) {
 
 function generateSignature(o) {
   if (isObject(o)) {
-    return SHA1(
-      Object.keys(o)
-        .map(n => n.toLowerCase())
-        .sort()
-        .join("|")
-    );
+    return SHA1(Object.keys(o).map(n => n.toLowerCase()).sort().join("|"));
   } else {
-    return SHA1(
-      Object.keys(o)
-        .map(n => typeof n)
-        .sort()
-        .join("|")
-    );
+    return SHA1(Object.keys(o).map(n => typeof n).sort().join("|"));
   }
 }
 
@@ -359,11 +368,9 @@ export default function transform(obj, options) {
 
   output = "";
 
-  Object.keys(localClasses)
-    .sort()
-    .forEach(key => {
-      output += localClasses[key];
-    });
+  Object.keys(localClasses).sort().forEach(key => {
+    output += localClasses[key];
+  });
 
   return output;
 }

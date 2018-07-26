@@ -119,3 +119,22 @@ test('should return correct io-ts typings if array is passed', t => {
     }
   ))
 })
+
+test('should return correct sarcastic typings', t => {
+	t.snapshot(transform(x, {
+		lang: "sarcastic"
+	}))
+})
+
+test('should return correct sarcastic typings if array is passed', t => {
+	t.snapshot(transform(
+		[{
+			a: 'hello'
+		}, {
+			b: "hi"
+    }],
+    {
+      lang: "sarcastic"
+    }
+  ))
+})
