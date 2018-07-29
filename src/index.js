@@ -93,7 +93,6 @@ const mapping = {
     endingBrace: "})",
     terminator: ";",
     equator: " = t.type(",
-    optional: "?",
     handleArray: (className = "", any) =>
       any ? "t.Array" : `t.array(${className})`,
     types: {
@@ -112,9 +111,9 @@ const mapping = {
     endingBrace: "})",
     terminator: ";",
     equator: " = is.shape(",
-    optional: "?", // is.maybe
     handleArray: (className = "", any) =>
       any ? "is.array" : `is.arrayOf(${className})`,
+    handleOptionalValue: value => `is.maybe(${value})`,
     types: {
       STRING: "is.string",
       NUMBER: "is.number",
@@ -280,12 +279,14 @@ function analyzeObject(obj, objectName) {
   return { classes, classesCache, classesInUse };
 }
 
+function isOptionalKey(key, objName) {
+  return (
+    optionalProperties[objName] && optionalProperties[objName].indexOf(key) >= 0
+  );
+}
+
 function setOptional(key, objName) {
-  if (
-    optionalProperties[objName] &&
-    optionalProperties[objName].indexOf(key) >= 0 &&
-    langDetails.optional
-  ) {
+  if (isOptionalKey(key, objName) && langDetails.optional) {
     return langDetails.optional;
   }
   return "";
@@ -345,7 +346,8 @@ export default function transform(obj, options) {
     startingBrace,
     terminator,
     preInterface,
-    hideTerminatorAtLast
+    hideTerminatorAtLast,
+    handleOptionalValue
   } = langDetails;
 
   Object.keys(classes).map(clsName => {
@@ -357,6 +359,12 @@ export default function transform(obj, options) {
     keys.map((key, i) => {
       const _separator =
         i === keys.length - 1 && hideTerminatorAtLast ? "" : separator;
+      const _key = rustRename(key, lang, clsName, rustCase);
+      let _value = classes[clsName][key];
+      _value =
+        isOptionalKey(key, clsName) && handleOptionalValue
+          ? handleOptionalValue(_value)
+          : _value;
 
       output += `${rustRename(key, lang, clsName, rustCase)}: ${classes[
         clsName
