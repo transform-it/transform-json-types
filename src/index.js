@@ -366,9 +366,7 @@ export default function transform(obj, options) {
           ? handleOptionalValue(_value)
           : _value;
 
-      output += `${rustRename(key, lang, clsName, rustCase)}: ${classes[
-        clsName
-      ][key]}${_separator}\n`;
+      output += `${_key}: ${_value}${_separator}\n`;
     });
     output += `${endingBrace}${terminator}\n\n`;
     localClasses[clsName] = output;
