@@ -65,6 +65,7 @@ const mapping = {
       BOOLEAN: "bool",
       ANY: "()"
     }),
+    handleOptionalValue: value => `Option<${value}>`,
     handleArray: (className = "") => `Vec<${className}>`,
     preInterface: "#[derive(Serialize, Deserialize)]\n"
   },
@@ -83,6 +84,7 @@ const mapping = {
       BOOLEAN: "Boolean"
     }),
     hideTerminatorAtLast: true,
+    handleOptionalValue: value => `Option[${value}]`,
     handleArray: (className = "") => `Seq[${className}]`
   },
   "io-ts": {
