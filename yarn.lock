@@ -4812,9 +4812,9 @@ run-series@^1.1.3:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/run-series/-/run-series-1.1.4.tgz#89a73ddc5e75c9ef8ab6320c0a1600d6a41179b9"
 
-rust-keywords@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/rust-keywords/-/rust-keywords-1.0.1.tgz#7a3def03f8ed79557e258ee8e96fe74792eced34"
+rust-keywords@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rust-keywords/-/rust-keywords-1.1.0.tgz#680e933f63a0e5948cc9025d9e41797f0a5d4cc4"
 
 rx-lite-aggregates@^4.0.8:
   version "4.0.8"
