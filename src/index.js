@@ -106,6 +106,25 @@ const mapping = {
       ARRAY: "t.array"
     }
   },
+  runtypes: {
+    preText: "import * as rt from 'runtypes'",
+    interface: "const",
+    separator: ",",
+    startingBrace: "{",
+    endingBrace: "})",
+    terminator: ";",
+    equator: " = rt.Record(",
+    handleArray: (className = "", any) =>
+      any ? "rt.Array" : `rt.Array(${className})`,
+    types: {
+      STRING: "rt.String",
+      NUMBER: "rt.Number",
+      INTEGER: "rt.Integer",
+      ANY: "rt.Any",
+      BOOLEAN: "rt.Boolean",
+      ARRAY: "rt.Array"
+    }
+  },
   sarcastic: {
     interface: "const",
     separator: ",",
