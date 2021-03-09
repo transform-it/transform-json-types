@@ -120,7 +120,7 @@ const mapping = {
       STRING: "rt.String",
       NUMBER: "rt.Number",
       INTEGER: "rt.Integer",
-      ANY: "rt.Any",
+      ANY: "rt.Unknown",
       BOOLEAN: "rt.Boolean",
       ARRAY: "rt.Array"
     }
