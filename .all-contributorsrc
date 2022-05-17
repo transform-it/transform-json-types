@@ -1,6 +1,6 @@
 {
   "projectName": "transform-json-types",
-  "projectOwner": "",
+  "projectOwner": "transform-it",
   "files": [
     "README.md"
   ],
@@ -54,6 +54,19 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "cobraz",
+      "name": "Simen A. W. Olsen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3726815?v=4",
+      "profile": "http://cobraz.no",
+      "contributions": [
+        "code"
+      ]
     }
-  ]
+  ],
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributorsPerLine": 7
 }
