@@ -136,9 +136,22 @@ MIT @ [Ritesh Kumar](https://twitter.com/ritz078)
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/5389035?v=4" width="100px;"/><br /><sub><b>Ritesh Kumar</b></sub>](http://riteshkr.com)<br />[💻](https://github.com//transform-json-types/commits?author=ritz078 "Code") [📖](https://github.com//transform-json-types/commits?author=ritz078 "Documentation") [🤔](#ideas-ritz078 "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/47542?v=4" width="100px;"/><br /><sub><b>Florian Gilcher</b></sub>](http://asquera.de)<br />[💻](https://github.com//transform-json-types/commits?author=skade "Code") | [<img src="https://avatars0.githubusercontent.com/u/417709?v=4" width="100px;"/><br /><sub><b>Pedro Casaubon</b></sub>](http://www.xperiments.in)<br />[💻](https://github.com//transform-json-types/commits?author=xperiments "Code") [🤔](#ideas-xperiments "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/179534?v=4" width="100px;"/><br /><sub><b>stereobooster</b></sub>](https://github.com/stereobooster)<br />[💻](https://github.com//transform-json-types/commits?author=stereobooster "Code") | [<img src="https://avatars0.githubusercontent.com/u/97195?v=4" width="100px;"/><br /><sub><b>Will Fuqua</b></sub>](http://fuqua.io)<br />[📖](https://github.com//transform-json-types/commits?author=waf "Documentation") |
-| :---: | :---: | :---: | :---: | :---: |
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://riteshkr.com"><img src="https://avatars3.githubusercontent.com/u/5389035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ritesh Kumar</b></sub></a><br /><a href="https://github.com/transform-it/transform-json-types/commits?author=ritz078" title="Code">💻</a> <a href="https://github.com/transform-it/transform-json-types/commits?author=ritz078" title="Documentation">📖</a> <a href="#ideas-ritz078" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://asquera.de"><img src="https://avatars2.githubusercontent.com/u/47542?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Florian Gilcher</b></sub></a><br /><a href="https://github.com/transform-it/transform-json-types/commits?author=skade" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.xperiments.in"><img src="https://avatars0.githubusercontent.com/u/417709?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pedro Casaubon</b></sub></a><br /><a href="https://github.com/transform-it/transform-json-types/commits?author=xperiments" title="Code">💻</a> <a href="#ideas-xperiments" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/stereobooster"><img src="https://avatars2.githubusercontent.com/u/179534?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stereobooster</b></sub></a><br /><a href="https://github.com/transform-it/transform-json-types/commits?author=stereobooster" title="Code">💻</a></td>
+    <td align="center"><a href="http://fuqua.io"><img src="https://avatars0.githubusercontent.com/u/97195?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Will Fuqua</b></sub></a><br /><a href="https://github.com/transform-it/transform-json-types/commits?author=waf" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://cobraz.no"><img src="https://avatars.githubusercontent.com/u/3726815?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Simen A. W. Olsen</b></sub></a><br /><a href="https://github.com/transform-it/transform-json-types/commits?author=cobraz" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
